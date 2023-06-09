@@ -16,8 +16,11 @@ picam2.configure("still")
 picam2.start()
 
 list_of_files = glob.glob('/home/cam/timelapse/tomate/*.jpg')
-latest_file = max(list_of_files, key=os.path.getmtime)
-i = int(latest_file.split("-")[1].split(".")[0]) + 1
+if list_of_files:
+    latest_file = max(list_of_files, key=os.path.getmtime)
+    i = int(latest_file.split("-")[1].split(".")[0]) + 1
+else:
+    i = 1
 
 # Give time for Aec and Awb to settle.
 time.sleep(10)
