@@ -17,7 +17,7 @@ picam2.start()
 
 list_of_files = glob.glob('/home/cam/timelapse/tomate/*.jpg')
 latest_file = max(list_of_files, key=os.path.getmtime)
-i = int(latest_file.split("-")[1].split(".")[0])
+i = int(latest_file.split("-")[1].split(".")[0]) + 1
 
 # Give time for Aec and Awb to settle.
 time.sleep(10)
@@ -29,7 +29,7 @@ while True:
     r.release()
     i += 1
     time.sleep(60)
-    log.info(f"Captured image {i} {time.time() - start_time:.2f}s since restart.")
+    logger.info(f"Captured image {i} {time.time() - start_time:.2f}s since restart.")
 
 
 picam2.stop()
