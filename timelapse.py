@@ -28,7 +28,7 @@ while True:
     r.save("main", f"/home/cam/timelapse/tomate/image-{i}.jpg")
     r.release()
     i += 1
-    time.sleep(60)
+    time.sleep(300)
     logger.info(f"Captured image {i} {time.time() - start_time:.2f}s since restart.")
 
 
