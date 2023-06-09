@@ -15,7 +15,7 @@ picam2 = Picamera2()
 picam2.configure("still")
 picam2.start()
 
-list_of_files = glob.glob('/path/to/folder/*') # * means all if need specific format then *.csv
+list_of_files = glob.glob('/home/cam/timelapse/tomate/*.jpg')
 latest_file = max(list_of_files, key=os.path.getctime)
 i = int(latest_file.split("-")[1].split(".")[0])
 
@@ -25,7 +25,7 @@ time.sleep(10)
 start_time = time.time()
 while True:
     r = picam2.capture_request()
-    r.save("main", f"image{i}.jpg")
+    r.save("main", f"/home/cam/timelapse/tomate/image-{i}.jpg")
     r.release()
     i += 1
     time.sleep(60)
